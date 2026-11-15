@@ -1,5 +1,25 @@
 ---
 import "../styles/global.css"
+import Brand from "../components/Brand.astro"
+import { Image } from "astro:assets"
+
+const showcase = [
+  {
+    name: "Morfa Plumbing",
+    trade: "Plumbing & heating",
+    blurb: "A one-pager that turns emergency call-outs into booked jobs.",
+  },
+  {
+    name: "Bae Electrical",
+    trade: "Electrical services",
+    blurb: "Certifications front and centre, with a quote form one tap away.",
+  },
+  {
+    name: "Cwm Renovations",
+    trade: "Building & renovations",
+    blurb: "A before-and-after gallery that sells the craft for them.",
+  },
+]
 ---
 
 <html lang="en">
@@ -16,23 +36,26 @@ import "../styles/global.css"
       href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header class="sticky top-0 z-20 bg-transparent text-black">
+    <header
+      class="group sticky top-0 z-20 bg-transparent text-black transition-[background-color,backdrop-filter] duration-300
+        data-mark:bg-white/90 data-mark:backdrop-blur-md"
+    >
       <div class="mx-auto flex h-16 max-w-400 items-center justify-between">
         <h1 class="font-display text-3xl leading-none">
-          <a
-            href="/"
-            class="no-underline text-black flex items-center gap-2.5 transition-opacity hover:opacity-70"
-          >
-            <span class="font-semibold tracking-tight">
-              Ymlaen <span class="font-light">Media</span>
-            </span>
-          </a>
+          <Brand />
         </h1>
-        <nav>
+        <nav class="flex gap-6">
           <a href="#about" class="text-black no-underline">
             About
+          </a>
+          <a href="#work" class="text-black no-underline">
+            Work
           </a>
         </nav>
       </div>
@@ -48,11 +71,13 @@ import "../styles/global.css"
           <button
             id="contact-fab"
             type="button"
-            class="group z-99 block origin-top-left p-0 will-change-transform hover:cursor-pointer"
+            class="group z-99 block origin-top-left p-0 will-change-transform data-floating:fixed data-floating:top-0 data-floating:left-0 hover:cursor-pointer"
           >
             <span
-              class="flex items-center gap-3 rounded-full border border-white/60 bg-white/10 px-7 py-3 text-base font-light tracking-wide whitespace-nowrap text-white backdrop-blur-md transition-[background-color,border-color,color] duration-300
-             group-hover:bg-white group-hover:text-neutral-900"
+              class="flex items-center gap-3 rounded-full border border-white/60 bg-white/10 px-7 py-3 text-base font-light tracking-wide whitespace-nowrap text-white backdrop-blur-xs transition-[background-color,border-color,color] duration-300
+             group-hover:bg-white group-hover:text-neutral-900
+             group-data-docked:border-neutral-900 group-data-docked:bg-neutral-900 group-data-docked:text-white group-data-docked:ring-1 group-data-docked:ring-white/25
+             group-data-docked:group-hover:bg-neutral-700"
             >
               Let's talk
               <span aria-hidden="true" class="text-lg font-extralight">
@@ -69,15 +94,18 @@ import "../styles/global.css"
       class="full-bleed relative [--curve:0rem] sm:[--curve:0.75rem] lg:[--curve:0rem]"
     >
       <div class="-mt-(--curve) -mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-white"></div>
-      <div id="about" class="bg-white text-neutral-900 pt-50">
-        <div class="mx-auto max-w-275 px-page sm:px-page-sm pt-16 pb-12 sm:pt-24 sm:pb-24">
-          <div class="scroll-mt-24 max-w-3xl">
+      <div
+        id="about"
+        class="sticky top-0 flex min-h-svh scroll-mt-24 flex-col justify-center bg-white py-20 text-neutral-900"
+      >
+        <div class="mx-auto w-full max-w-275 px-page sm:px-page-sm">
+          <div class="max-w-3xl">
             <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
               About
             </p>
             <h2 class="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               Websites that move your business{" "}
-              <span class="font-light italic">forward.</span>
+              <span class="font-light italic text-[#2F4A3C]">forward.</span>
             </h2>
             <p class="mt-8 text-lg leading-relaxed text-neutral-600 sm:text-xl">
               You've built your business on a good name and word of mouth. A
@@ -95,24 +123,85 @@ import "../styles/global.css"
               every site we build.
             </p>
           </div>
-
-          <div class="mt-20 rounded-3xl bg-neutral-900 px-8 py-14 text-center text-white sm:px-16 sm:py-20">
-            <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
-              Looking for a new website?
-            </h2>
-            <p class="mx-auto mt-5 max-w-xl text-lg text-neutral-300">
-              We'll get back to you with honest advice and a clear next step.
-            </p>
-            <a
-              href="mailto:hello@example.com"
-              class="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-neutral-900 no-underline transition-transform hover:scale-105"
-            >
-              Start a conversation
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
         </div>
       </div>
+      <div class="h-45 bg-white"></div>
+
+      <section id="work" class="relative scroll-mt-48">
+        <div class="-mt-15 -mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-[#1F2B24]"></div>
+        <div class="bg-[#1F2B24] pt-10 pb-24 text-white sm:pt-16 sm:pb-32">
+          <div class="mx-auto max-w-275 px-page sm:px-page-sm pt-30">
+            <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+              Showcase
+            </p>
+            <h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              Recent builds,{" "}
+              <span class="font-light italic text-[#8e9a4e]">
+                made to win work.
+              </span>
+            </h2>
+            <p class="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl">
+              Every site is designed and built from scratch for the business it
+              represents. A flavour of recent launches, from first call to final
+              invoice.
+            </p>
+
+            <div class="relative mt-16 aspect-[4/3] overflow-hidden rounded-3xl border border-white/10 sm:aspect-[21/9]">
+              <Image
+                src="/joseph-reeder-INVi7be11S8-unsplash.jpg"
+                alt=""
+                width={2400}
+                height={1600}
+                class="scroll-parallax absolute left-0 top-[-15%] h-[130%] w-full object-cover"
+              />
+            </div>
+
+            <div class="mt-16 grid gap-6 sm:grid-cols-3">
+              {showcase.map((project) => (
+                <article class="rounded-3xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 hover:-translate-y-1">
+                  <div class="aspect-[4/3] rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
+                  <div class="px-2 pb-2 pt-5">
+                    <h3 class="text-lg font-semibold tracking-tight">
+                      {project.name}
+                    </h3>
+                    <p class="mt-1 text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+                      {project.trade}
+                    </p>
+                    <p class="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
+                      {project.blurb}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
+
+    <footer class="full-bleed relative bg-white">
+      <div class="mx-auto max-w-275 px-page py-5 sm:px-page-sm sm:py-28">
+        <div class="rounded-3xl bg-[#1F2B24] px-8 py-14 text-center text-white sm:px-16 sm:py-20">
+          <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+            Looking for a new website?
+          </h2>
+          <p class="mx-auto mt-5 max-w-2xl text-lg text-neutral-300">
+            Let us know what you're looking for, and we'll get back to you right
+            away.
+          </p>
+          <a
+            href="mailto:hello@example.com"
+            class="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-neutral-900 no-underline transition-transform hover:scale-105"
+          >
+            Start a conversation
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
+
+<script>
+  import "../scripts/home"
+</script>

@@ -19,19 +19,25 @@
   }
 }
 
-/* Scroll-linked effect: element moves up as the user scrolls down.
-   Distance and scroll range can be tuned in the keyframes/range below. */
+/* Scroll-linked effect: the element drifts upward as it crosses the viewport.
+   Drift distance and range can be tuned in the keyframes/range below. */
 @keyframes parallax-up {
   from {
-    transform: translateY(0);
+    transform: translateY(6%);
   }
   to {
-    transform: translateY(-50vh);
+    transform: translateY(-6%);
   }
 }
 
 .scroll-parallax {
   animation: parallax-up linear both;
-  animation-timeline: scroll(root block);
-  animation-range: 0vh 120vh;
+  animation-timeline: view(block);
+  animation-range: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-parallax {
+    animation: none;
+  }
 }
