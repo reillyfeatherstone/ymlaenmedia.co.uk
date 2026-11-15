@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Work Sans", sans-serif;
+
+  /* Horizontal page padding applied to all content except .full-bleed elements */
+  --spacing-page: 1rem;
+  --spacing-page-sm: 2rem;
+}
+
+@layer base {
+  body > *:not(.full-bleed) {
+    padding-inline: var(--spacing-page);
+
+    @variant sm {
+      padding-inline: var(--spacing-page-sm);
+    }
+  }
+}
+
+/* Scroll-linked effect: element moves up as the user scrolls down.
+   Distance and scroll range can be tuned in the keyframes/range below. */
+@keyframes parallax-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50vh);
+  }
+}
+
+.scroll-parallax {
+  animation: parallax-up linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0vh 120vh;
+}
