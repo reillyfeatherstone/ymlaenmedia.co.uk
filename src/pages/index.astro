@@ -89,11 +89,8 @@ const showcase = [
       </div>
     </section>
 
-    <section
-      id="after-hero"
-      class="full-bleed relative [--curve:0rem] sm:[--curve:0.75rem] lg:[--curve:0rem]"
-    >
-      <div class="-mt-(--curve) -mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-white"></div>
+    <section id="after-hero" class="full-bleed relative">
+      <div class="-mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-white"></div>
       <div
         id="about"
         class="sticky top-0 flex min-h-svh scroll-mt-24 flex-col justify-center bg-white py-20 text-neutral-900"
@@ -141,12 +138,11 @@ const showcase = [
               </span>
             </h2>
             <p class="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl">
-              Every site is designed and built from scratch for the business it
-              represents. A flavour of recent launches, from first call to final
-              invoice.
+              Whether you're a self-employed plumber or a growing building firm,
+              we make websites that turn visitors into customers
             </p>
 
-            <div class="relative mt-16 aspect-[4/3] overflow-hidden rounded-3xl border border-white/10 sm:aspect-[21/9]">
+            <div class="relative mt-16 aspect-4/3 overflow-hidden rounded-3xl border border-white/10 sm:aspect-21/9">
               <Image
                 src="/joseph-reeder-INVi7be11S8-unsplash.jpg"
                 alt=""
@@ -159,7 +155,7 @@ const showcase = [
             <div class="mt-16 grid gap-6 sm:grid-cols-3">
               {showcase.map((project) => (
                 <article class="rounded-3xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 hover:-translate-y-1">
-                  <div class="aspect-[4/3] rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
+                  <div class="aspect-4/3 rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
                   <div class="px-2 pb-2 pt-5">
                     <h3 class="text-lg font-semibold tracking-tight">
                       {project.name}

@@ -4,7 +4,6 @@
 @theme {
   --font-display: "Work Sans", sans-serif;
 
-  /* Horizontal page padding applied to all content except .full-bleed elements */
   --spacing-page: 1rem;
   --spacing-page-sm: 2rem;
 }
@@ -19,8 +18,6 @@
   }
 }
 
-/* Scroll-linked effect: the element drifts upward as it crosses the viewport.
-   Drift distance and range can be tuned in the keyframes/range below. */
 @keyframes parallax-up {
   from {
     transform: translateY(6%);
