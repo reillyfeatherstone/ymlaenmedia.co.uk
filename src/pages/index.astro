@@ -194,7 +194,7 @@ const showcase = [
 <script>
   import { ScrollSmoother, ScrollTrigger } from "../lib/gsap"
 
-  ScrollSmoother.create({
+  const smoother = ScrollSmoother.create({
     wrapper: "#smoother-wrapper",
     content: "#smoother-content",
     smooth: 1.5,
@@ -209,33 +209,42 @@ const showcase = [
 
   ScrollTrigger.create({
     trigger: "#about",
-    start: `bottom bottom`,
+    start: "bottom bottom",
     pin: true,
     pinSpacing: false,
   })
 
   ScrollTrigger.create({
     trigger: "#work",
-    start: `bottom bottom`,
+    start: "bottom bottom",
     pin: true,
     pinSpacing: false,
   })
 
   ScrollTrigger.create({
     trigger: "#about",
-    start: `top top`,
+    start: "top top+=35",
     toggleClass: { targets: "#header", className: "bg-white!" },
   })
 
   ScrollTrigger.create({
     trigger: "#work",
-    start: `top top+=${35}`,
+    start: "top top+=35",
     toggleClass: { targets: "#header", className: "bg-[#1F2B24]!" },
   })
 
   ScrollTrigger.create({
     trigger: "#work",
-    start: `top top+=${35}`,
+    start: "top top+=35",
     toggleClass: { targets: "#brand, #nav", className: "text-white!" },
   })
+
+  document
+    .querySelectorAll<HTMLAnchorElement>('#nav a[href^="#"]')
+    .forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault()
+        smoother.scrollTo(link.getAttribute("href")!, true, "top -59px")
+      })
+    })
 </script>
