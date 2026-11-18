@@ -3,38 +3,10 @@
 
 @theme {
   --font-display: "Work Sans", sans-serif;
-
+  --font-logo: "Archivo", sans-serif;
   --spacing-page: 1rem;
   --spacing-page-sm: 2rem;
 }
 
 @layer base {
-  body > *:not(.full-bleed) {
-    padding-inline: var(--spacing-page);
-
-    @variant sm {
-      padding-inline: var(--spacing-page-sm);
-    }
-  }
-}
-
-@keyframes parallax-up {
-  from {
-    transform: translateY(6%);
-  }
-  to {
-    transform: translateY(-6%);
-  }
-}
-
-.scroll-parallax {
-  animation: parallax-up linear both;
-  animation-timeline: view(block);
-  animation-range: cover;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .scroll-parallax {
-    animation: none;
-  }
 }

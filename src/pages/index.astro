@@ -42,162 +42,200 @@ const showcase = [
     />
   </head>
   <body>
-    <header
-      class="group sticky top-0 z-20 bg-transparent text-black transition-[background-color,backdrop-filter] duration-300
-        data-mark:bg-white/90 data-mark:backdrop-blur-md"
-    >
+    <header id="header" class="fixed inset-x-0 top-0 z-99 px-5 text-black">
       <div class="mx-auto flex h-16 max-w-400 items-center justify-between">
-        <h1 class="font-display text-3xl leading-none">
+        <div class="font-display text-3xl leading-none">
           <Brand />
-        </h1>
-        <nav class="flex gap-6">
-          <a href="#about" class="text-black no-underline">
-            About
-          </a>
-          <a href="#work" class="text-black no-underline">
-            Work
-          </a>
+        </div>
+        <nav id="nav" class="flex gap-6">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
         </nav>
       </div>
     </header>
 
-    <section class="full-bleed sticky top-0 z-0 -mt-16 min-h-svh bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat">
-      <div class="relative mx-auto flex min-h-svh w-full max-w-400 flex-col items-center px-page text-center sm:px-page-sm gap-15">
-        <h2 class="pt-50 text-6xl text-white mix-blend-difference sm:pt-50 sm:text-8xl lg:pt-75 lg:text-9xl">
-          Web Design
-        </h2>
-
-        <div id="contact-slot" class="mt-auto mb-[40vh]">
-          <button
-            id="contact-fab"
-            type="button"
-            class="group z-99 block origin-top-left p-0 will-change-transform data-floating:fixed data-floating:top-0 data-floating:left-0 hover:cursor-pointer"
-          >
-            <span
-              class="flex items-center gap-3 rounded-full border border-white/60 bg-white/10 px-7 py-3 text-base font-light tracking-wide whitespace-nowrap text-white backdrop-blur-xs transition-[background-color,border-color,color] duration-300
-             group-hover:bg-white group-hover:text-neutral-900
-             group-data-docked:border-neutral-900 group-data-docked:bg-neutral-900 group-data-docked:text-white group-data-docked:ring-1 group-data-docked:ring-white/25
-             group-data-docked:group-hover:bg-neutral-700"
-            >
-              Let's talk
-              <span aria-hidden="true" class="text-lg font-extralight">
-                →
-              </span>
-            </span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section id="after-hero" class="full-bleed relative">
-      <div class="-mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-white"></div>
-      <div
-        id="about"
-        class="sticky top-0 flex min-h-svh scroll-mt-24 flex-col justify-center bg-white py-20 text-neutral-900"
-      >
-        <div class="mx-auto w-full max-w-275 px-page sm:px-page-sm">
-          <div class="max-w-3xl">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-              About
-            </p>
-            <h2 class="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              Websites that move your business{" "}
-              <span class="font-light italic text-[#2F4A3C]">forward.</span>
-            </h2>
-            <p class="mt-8 text-lg leading-relaxed text-neutral-600 sm:text-xl">
-              You've built your business on a good name and word of mouth. A
-              professional website backs that up. Most people look a business up
-              online before they ever reach out. A strong website builds the
-              trust that turns those searches into work.
-            </p>
-            <p class="mt-5 text-lg leading-relaxed text-neutral-600 sm:text-xl">
-              Google likes the websites we build, so people in your area are
-              more likely to find you. Every site is made from scratch with your
-              business in mind, and designed to bring in more work.
-            </p>
-            <p class="mt-5 text-lg leading-relaxed text-neutral-600 sm:text-xl italic">
-              P.S. Ymlaen is Welsh for “forward”, and that's the idea behind
-              every site we build.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="h-45 bg-white"></div>
-
-      <section id="work" class="relative scroll-mt-48">
-        <div class="-mt-15 -mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-[#1F2B24]"></div>
-        <div class="bg-[#1F2B24] pt-10 pb-24 text-white sm:pt-16 sm:pb-32">
-          <div class="mx-auto max-w-275 px-page sm:px-page-sm pt-30">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
-              Showcase
-            </p>
-            <h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              Recent builds,{" "}
-              <span class="font-light italic text-[#8e9a4e]">
-                made to win work.
-              </span>
-            </h2>
-            <p class="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl">
-              Whether you're a self-employed plumber or a growing building firm,
-              we make websites that turn visitors into customers
-            </p>
-
-            <div class="relative mt-16 aspect-4/3 overflow-hidden rounded-3xl border border-white/10 sm:aspect-21/9">
-              <Image
-                src="/joseph-reeder-INVi7be11S8-unsplash.jpg"
-                alt=""
-                width={2400}
-                height={1600}
-                class="scroll-parallax absolute left-0 top-[-15%] h-[130%] w-full object-cover"
-              />
+    <div id="smoother-wrapper">
+      <div id="smoother-content">
+        <section
+          id="hero"
+          class="min-h-svh bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat"
+        >
+          <div class="mx-auto flex w-full max-w-400 flex-col items-center px-page text-center sm:px-page-sm gap-15">
+            <div class="flex flex-col gap-2 pt-30 text-6xl font-base sm:font-medium md:pt-35 text-white mix-blend-difference sm:pt-35 sm:text-7xl lg:pt-45 lg:text-9xl">
+              <span>Small Business </span>
+              <span>Web Design</span>
             </div>
 
-            <div class="mt-16 grid gap-6 sm:grid-cols-3">
-              {showcase.map((project) => (
-                <article class="rounded-3xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 hover:-translate-y-1">
-                  <div class="aspect-4/3 rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
-                  <div class="px-2 pb-2 pt-5">
-                    <h3 class="text-lg font-semibold tracking-tight">
-                      {project.name}
-                    </h3>
-                    <p class="mt-1 text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
-                      {project.trade}
-                    </p>
-                    <p class="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
-                      {project.blurb}
-                    </p>
-                  </div>
-                </article>
-              ))}
+            <div id="cta" class="mt-auto mb-[40vh]">
+              <button
+                type="button"
+                class="group flex items-center gap-3 rounded-full border border-[#1F2B24] bg-[#1F2B24] px-7 py-3 tracking-wide text-white shadow-lg shadow-black/20 hover:cursor-pointer hover:bg-white hover:text-neutral-900"
+              >
+                Let's talk
+                <span
+                  aria-hidden="true"
+                  class="text-lg transition-transform duration-300 will-change-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </button>
             </div>
           </div>
-        </div>
-      </section>
-    </section>
+        </section>
 
-    <footer class="full-bleed relative bg-white">
-      <div class="mx-auto max-w-275 px-page py-5 sm:px-page-sm sm:py-28">
-        <div class="rounded-3xl bg-[#1F2B24] px-8 py-14 text-center text-white sm:px-16 sm:py-20">
-          <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
-            Looking for a new website?
-          </h2>
-          <p class="mx-auto mt-5 max-w-2xl text-lg text-neutral-300">
-            Let us know what you're looking for, and we'll get back to you right
-            away.
-          </p>
-          <a
-            href="mailto:hello@example.com"
-            class="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-neutral-900 no-underline transition-transform hover:scale-105"
-          >
-            Start a conversation
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
+        <section id="about" class="relative">
+          <div class="-mb-px px-page h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-white" />
+          <div class="flex min-h-svh scroll-mt-24 flex-col justify-center bg-white py-20 text-neutral-900">
+            <div class="mx-auto w-full max-w-275 px-page sm:px-page-sm">
+              <div class="max-w-3xl">
+                <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
+                  About
+                </p>
+                <h2 class="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                  Websites that move your business{" "}
+                  <span class="font-light italic text-[#2F4A3C]">forward.</span>
+                </h2>
+                <p class="mt-8 text-lg leading-relaxed text-neutral-600 sm:text-xl">
+                  You've built your business on a good name and word of mouth. A
+                  professional website backs that up. Most people look a
+                  business up online before they ever reach out. A strong
+                  website builds the trust that turns those searches into work.
+                </p>
+                <p class="mt-5 text-lg leading-relaxed text-neutral-600 sm:text-xl">
+                  Google likes the websites we build, so people in your area are
+                  more likely to find you. Every site is made from scratch with
+                  your business in mind, and designed to bring in more work.
+                </p>
+                <p class="mt-5 text-lg leading-relaxed text-neutral-600 sm:text-xl italic">
+                  P.S. Ymlaen is Welsh for “forward”, and that's the idea behind
+                  every site we build.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="h-45 bg-white"></div>
+
+        <section id="work" class="relative scroll-mt-48 pb-24">
+          <div class="-mt-15 -mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-[#1F2B24]"></div>
+          <div class="bg-[#1F2B24] pt-10 pb-24 text-white sm:pt-16 sm:pb-32">
+            <div class="mx-auto max-w-275 px-page sm:px-page-sm pt-30">
+              <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+                Showcase
+              </p>
+              <h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                Recent builds,{" "}
+                <span class="font-light italic text-[#8e9a4e]">
+                  made to win work.
+                </span>
+              </h2>
+              <p class="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl">
+                Whether you're a self-employed plumber or a growing building
+                firm, we make websites that turn visitors into customers
+              </p>
+
+              <div class="relative mt-16 aspect-4/3 overflow-hidden rounded-3xl border border-white/10 sm:aspect-21/9">
+                <Image
+                  src="/joseph-reeder-INVi7be11S8-unsplash.jpg"
+                  alt=""
+                  width={2400}
+                  height={1600}
+                  class="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+
+              <div class="mt-16 grid gap-6 sm:grid-cols-3">
+                {showcase.map((project) => (
+                  <article class="rounded-3xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 hover:-translate-y-1">
+                    <div class="aspect-4/3 rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
+                    <div class="px-2 pb-2 pt-5">
+                      <h3 class="text-lg font-semibold tracking-tight">
+                        {project.name}
+                      </h3>
+                      <p class="mt-1 text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+                        {project.trade}
+                      </p>
+                      <p class="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
+                        {project.blurb}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="relative bg-white">
+          <div class="mx-auto max-w-275 px-page py-5 sm:px-page-sm sm:py-28">
+            <div class="rounded-3xl bg-[#1F2B24] px-8 py-14 text-center text-white sm:px-16 sm:py-20">
+              <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+                Looking for a new website?
+              </h2>
+              <p class="mx-auto mt-5 max-w-2xl text-lg text-neutral-300">
+                Let us know what you're looking for, and we'll get back to you
+                right away.
+              </p>
+              <a
+                href="mailto:hello@example.com"
+                class="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-neutral-900 no-underline transition-transform hover:scale-105"
+              >
+                Start a conversation
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </footer>
       </div>
-    </footer>
+    </div>
   </body>
 </html>
 
 <script>
-  import "../scripts/home"
+  import { ScrollSmoother, ScrollTrigger } from "../lib/gsap"
+
+  ScrollSmoother.create({
+    wrapper: "#smoother-wrapper",
+    content: "#smoother-content",
+    smooth: 1.5,
+    effects: true,
+  })
+
+  ScrollTrigger.create({
+    trigger: "#hero",
+    pin: true,
+    pinSpacing: false,
+  })
+
+  ScrollTrigger.create({
+    trigger: "#about",
+    start: `bottom bottom`,
+    pin: true,
+    pinSpacing: false,
+  })
+
+  ScrollTrigger.create({
+    trigger: "#work",
+    start: `bottom bottom`,
+    pin: true,
+    pinSpacing: false,
+  })
+
+  ScrollTrigger.create({
+    trigger: "#about",
+    start: `top top`,
+    toggleClass: { targets: "#header", className: "bg-white!" },
+  })
+
+  ScrollTrigger.create({
+    trigger: "#work",
+    start: `top top+=${35}`,
+    toggleClass: { targets: "#header", className: "bg-[#1F2B24]!" },
+  })
+
+  ScrollTrigger.create({
+    trigger: "#work",
+    start: `top top+=${35}`,
+    toggleClass: { targets: "#brand, #nav", className: "text-white!" },
+  })
 </script>
