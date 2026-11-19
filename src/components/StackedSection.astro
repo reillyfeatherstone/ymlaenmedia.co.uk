@@ -1,0 +1,39 @@
+---
+interface Props {
+  id: string
+  bg: "bg-stone" | "bg-forest"
+  headerBg: "stone" | "forest"
+  pinStart?: string
+  curveClass?: string
+  class?: string
+}
+
+const {
+  id,
+  bg,
+  headerBg,
+  pinStart = "bottom bottom",
+  curveClass = "",
+  class: className = "",
+} = Astro.props
+---
+
+<section
+  id={id}
+  data-pin-start={pinStart}
+  data-header-bg={headerBg}
+  class="relative flex min-h-screen flex-col"
+>
+  <div
+    class:list={[
+      "-mb-px h-15 w-full shrink-0 rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%]",
+      bg,
+      curveClass,
+    ]}
+  />
+  <div class:list={["min-h-0 w-full flex-1", bg, className]}>
+    <div class="mx-auto w-full max-w-275 px-page sm:px-page-sm">
+      <slot />
+    </div>
+  </div>
+</section>

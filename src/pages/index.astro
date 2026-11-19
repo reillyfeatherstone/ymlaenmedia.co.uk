@@ -3,6 +3,7 @@ import "../styles/global.css"
 import Brand from "../components/Brand.astro"
 import { Image } from "astro:assets"
 import landscapeImage from "../assets/landscape.webp"
+import StackedSection from "../components/StackedSection.astro"
 
 const showcase = [
   {
@@ -43,7 +44,12 @@ const showcase = [
     />
   </head>
   <body>
-    <header id="header" class="fixed inset-x-0 top-0 z-99 px-5 text-black">
+    <header
+      id="header"
+      class="fixed inset-x-0 top-0 z-99 px-5 text-black
+      data-[bg=stone]:bg-stone
+        data-[bg=forest]:bg-forest data-[bg=forest]:text-white"
+    >
       <div class="mx-auto flex h-16 max-w-400 items-center justify-between">
         <div class="font-display text-3xl leading-none">
           <Brand />
@@ -70,7 +76,7 @@ const showcase = [
             <div id="cta" class="mt-auto mb-[40vh]">
               <button
                 type="button"
-                class="group flex relative isolate overflow-hidden items-center gap-3 rounded-full border border-[#1F2B24] bg-[#1F2B24] px-7 py-3 tracking-wide text-white shadow-lg shadow-black/20 hover:cursor-pointer"
+                class="group flex relative isolate overflow-hidden items-center gap-3 rounded-full border border-forest bg-forest px-7 py-3 tracking-wide text-white shadow-lg shadow-black/20 hover:cursor-pointer"
               >
                 <span class="absolute inset-0 -z-10 origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100" />
                 <span class="font-medium transition-colors duration-300 group-hover:text-neutral-900">
@@ -98,10 +104,14 @@ const showcase = [
           </div>
         </section>
 
-        <section id="what-we-do" class="relative">
-          <div class="-mb-px px-page h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-[#E6E4E2]" />
-          <div class="flex min-h-svh scroll-mt-24 flex-col justify-center bg-[#E6E4E2] py-20 text-neutral-900">
-            <div class="mx-auto w-full max-w-275 px-page sm:px-page-sm">
+        <StackedSection
+          id="what-we-do"
+          bg="bg-stone"
+          headerBg="stone"
+          class="pb-60"
+        >
+          <div class="flex min-h-svh scroll-mt-24 flex-col justify-center py-20 text-neutral-900">
+            <div class="mx-auto w-full max-w-275">
               <div class="max-w-3xl">
                 <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
                   What We Do
@@ -131,13 +141,16 @@ const showcase = [
               </div>
             </div>
           </div>
-        </section>
-        <div class="h-45 bg-[#E6E4E2]" />
+        </StackedSection>
 
-        <section id="work" class="relative scroll-mt-48">
-          <div class="-mt-15 -mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-[#1F2B24] pb-24"></div>
-          <div class="bg-[#1F2B24] pt-10 pb-24 text-white sm:pt-16 sm:pb-32">
-            <div class="mx-auto max-w-275 px-page sm:px-page-sm pt-30">
+        <StackedSection
+          id="work"
+          bg="bg-forest"
+          headerBg="forest"
+          class="pb-60"
+        >
+          <div class="pt-10 pb-24 text-white sm:pt-16 sm:pb-32">
+            <div class="mx-auto max-w-275 pt-30">
               <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
                 Showcase
               </p>
@@ -184,11 +197,14 @@ const showcase = [
               </div>
             </div>
           </div>
-        </section>
+        </StackedSection>
+        <StackedSection id="what-we-offer" bg="bg-stone" headerBg="stone">
+          <div class="">What We Offer</div>
+        </StackedSection>
 
         <footer class="relative bg-white">
           <div class="mx-auto max-w-275 px-page py-5 sm:px-page-sm sm:py-28">
-            <div class="rounded-3xl bg-[#1F2B24] px-8 py-14 text-center text-white sm:px-16 sm:py-20">
+            <div class="rounded-3xl bg-forest px-8 py-14 text-center text-white sm:px-16 sm:py-20">
               <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
                 Looking for a new website?
               </h2>
@@ -221,44 +237,48 @@ const showcase = [
     effects: true,
   })
 
-  ScrollTrigger.create({
-    trigger: "#hero",
-    pin: true,
-    pinSpacing: false,
+  const sections = [
+    { trigger: "#hero", pinStart: "top top", headerBg: "transparent" },
+    {
+      trigger: "#what-we-do",
+      pinStart: "bottom bottom+=240",
+      headerBg: "stone",
+    },
+    { trigger: "#work", pinStart: "bottom bottom+=240", headerBg: "forest" },
+    {
+      trigger: "#what-we-offer",
+      pinStart: "bottom bottom",
+      headerBg: "forest",
+    },
+  ]
+
+  const header = document.querySelector<HTMLElement>("#header")!
+
+  const setBackground = (value: string) => () => (header.dataset.bg = value)
+
+  sections.forEach(({ trigger, pinStart, headerBg }, i) => {
+    ScrollTrigger.create({
+      trigger,
+      start: pinStart,
+      pin: true,
+      pinSpacing: false,
+    })
+
+    const sectionAbove = sections[i - 1]
+    const isFirstSection = !sectionAbove
+
+    if (!isFirstSection) {
+      ScrollTrigger.create({
+        trigger,
+        start: "top top",
+        onEnter: setBackground(headerBg),
+        onEnterBack: setBackground(headerBg),
+        onLeaveBack: setBackground(sectionAbove.headerBg),
+      })
+    }
   })
 
-  ScrollTrigger.create({
-    trigger: "#what-we-do",
-    start: "bottom bottom",
-    pin: true,
-    pinSpacing: false,
-  })
-
-  ScrollTrigger.create({
-    trigger: "#work",
-    start: "bottom bottom",
-    pin: true,
-    pinSpacing: false,
-  })
-
-  ScrollTrigger.create({
-    trigger: "#what-we-do",
-    start: "top top+=35",
-    toggleClass: { targets: "#header", className: "bg-[#E6E4E2]!" },
-  })
-
-  ScrollTrigger.create({
-    trigger: "#work",
-    start: "top top+=35",
-    toggleClass: { targets: "#header", className: "bg-[#1F2B24]!" },
-  })
-
-  ScrollTrigger.create({
-    trigger: "#work",
-    start: "top top+=35",
-    toggleClass: { targets: "#brand, #nav", className: "text-white!" },
-  })
-
+  // Smooth scroll Nav Links
   document
     .querySelectorAll<HTMLAnchorElement>('#nav a[href^="#"]')
     .forEach((link) => {

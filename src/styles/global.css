@@ -6,6 +6,9 @@
   --font-logo: "Archivo", sans-serif;
   --spacing-page: 1rem;
   --spacing-page-sm: 2rem;
+
+  --color-stone: #e6e4e2;
+  --color-forest: #1f2b24;
 }
 
 @layer base {
