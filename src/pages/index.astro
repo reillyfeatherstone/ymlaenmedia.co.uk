@@ -3,7 +3,9 @@ import "../styles/global.css"
 import Brand from "../components/Brand.astro"
 import { Image } from "astro:assets"
 import landscapeImage from "../assets/landscape.webp"
+import Headshot from "../assets/ReillyFeatherstone.webp"
 import StackedSection from "../components/StackedSection.astro"
+import { Picture } from "astro:assets"
 
 const showcase = [
   {
@@ -20,6 +22,29 @@ const showcase = [
     name: "Cwm Renovations",
     trade: "Building & renovations",
     blurb: "A before-and-after gallery that sells the craft for them.",
+  },
+]
+
+const features = [
+  {
+    title: "Performance & Security",
+    body: "Maintenance, updates and security monitoring, all handled for you. Every site is hand-coded to be lightweight, fast and reliable.",
+    icon: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /><path d="M9 12l2 2 4 -4" />',
+  },
+  {
+    title: "Custom design",
+    body: "No templates. We will design your site from scratch around your business, your customers and your goals. Distinctive, yet instantly familiar.",
+    icon: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 21a9 9 0 0 1 0 -18a9 8 0 0 1 9 8a4.5 4 0 0 1 -4.5 4h-2.5a2 2 0 0 0 0 4a4 4 0 0 1 -2 2z" /><path d="M7.5 10.5l0 .01" /><path d="M12 7.5l0 .01" /><path d="M16.5 10.5l0 .01" />',
+  },
+  {
+    title: "Support from a real person",
+    body: "Questions? Edits? Something to look into? Contact us directly and get a real person, every time - we treat your website like our own.",
+    icon: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />',
+  },
+  {
+    title: "SEO that makes sense",
+    body: "Built to be found on Google, with an honest, jargon-free approach to SEO. We'll show you what works and help more customers find you.",
+    icon: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" />',
   },
 ]
 ---
@@ -149,57 +174,147 @@ const showcase = [
           headerBg="forest"
           class="pb-60"
         >
-          <div class="pt-10 pb-24 text-white sm:pt-16 sm:pb-32">
-            <div class="mx-auto max-w-275 pt-30">
-              <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
-                Showcase
+          <div class="pt-40 pb-24 text-white sm:pt-46 sm:pb-32 mx-auto max-w-275">
+            <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+              Showcase
+            </p>
+            <h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              Recent builds,{" "}
+              <span class="font-light italic text-[#8e9a4e]">
+                made to win work.
+              </span>
+            </h2>
+            <p class="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl">
+              Whether you're a self-employed plumber or a growing building firm,
+              we make websites that turn visitors into customers
+            </p>
+
+            <div class="relative mt-16 aspect-4/3 overflow-hidden rounded-3xl border border-white/10 sm:aspect-21/9">
+              <Image
+                src={landscapeImage}
+                alt=""
+                sizes="(min-width: 1100px) 1100px, 100vw"
+                quality={75}
+                format="webp"
+                class="absolute inset-0 h-full w-full object-cover"
+                inferSize
+              />
+            </div>
+
+            <div class="mt-16 grid gap-6 sm:grid-cols-3">
+              {showcase.map((project) => (
+                <article class="rounded-3xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 hover:-translate-y-1">
+                  <div class="aspect-4/3 rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
+                  <div class="px-2 pb-2 pt-5">
+                    <h3 class="text-lg font-semibold tracking-tight">
+                      {project.name}
+                    </h3>
+                    <p class="mt-1 text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+                      {project.trade}
+                    </p>
+                    <p class="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
+                      {project.blurb}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </StackedSection>
+
+        <StackedSection
+          id="what-we-offer"
+          bg="bg-stone"
+          headerBg="stone"
+          class="pb-60"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-[6fr_9fr] gap-10 md:gap-16 pt-40 pb-100 sm:pt-46 sm:pb-32 mx-auto max-lg:max-w-3xl">
+            <div class="relative self-center aspect-square sm:aspect-8/7 overflow-hidden lg:aspect-auto md:max-w-150 md:mx-auto">
+              <Picture
+                src={Headshot}
+                alt="Reilly Featherstone"
+                formats={["avif", "webp"]}
+                quality={75}
+                widths={[480, 720, 960]}
+                inferSize
+                class="h-full w-full rounded-3xl rounded-br-lg object-cover object-[0%_20%] lg:h-auto lg:w-full"
+              />
+              <div class="flex flex-row items-center gap-5 absolute right-5 bottom-5 bg-white p-5 rounded-md">
+                <div class="flex flex-col">
+                  <span class="text-base font-medium leading-4">
+                    Reilly Featherstone
+                  </span>
+                  <span class="text-sm text-forest">Owner, Developer</span>
+                </div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 64 64"
+                    class="h-10 w-10"
+                  >
+                    <path
+                      d="M9 11 H23 L32 28 L41 11 H55 L39 38 V53 H25 V38 Z"
+                      fill="#232a22"
+                    ></path>
+                    <circle cx="51" cy="48" r="5.5" fill="#8e9a4e"></circle>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
+                What We Offer
               </p>
-              <h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                Recent builds,{" "}
-                <span class="font-light italic text-[#8e9a4e]">
-                  made to win work.
+              <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+                Websites starting at{" "}
+                <span class="font-light italic text-[#2F4A3C]">
+                  £0 down and £150 per month
                 </span>
               </h2>
-              <p class="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl">
-                Whether you're a self-employed plumber or a growing building
-                firm, we make websites that turn visitors into customers
-              </p>
-
-              <div class="relative mt-16 aspect-4/3 overflow-hidden rounded-3xl border border-white/10 sm:aspect-21/9">
-                <Image
-                  src={landscapeImage}
-                  alt=""
-                  sizes="(min-width: 1100px) 1100px, 100vw"
-                  quality={75}
-                  format="webp"
-                  class="absolute inset-0 h-full w-full object-cover"
-                  inferSize
-                />
+              <div class="basic mt-4 flex flex-col gap-5">
+                <p class="text-lg lg:text-base leading-relaxed text-neutral-600">
+                  Get a bespoke, professionally designed website for £0 upfront.
+                  Just £150/month for a complete website package, including up
+                  to five pages. Need something bigger? We offer custom pricing
+                  based on the scope of work, number of additional pages and
+                  time involved.
+                </p>
+                <p class="text-lg lg:text-base leading-relaxed text-neutral-600">
+                  There's a 12-month minimum commitment, with everything you
+                  need to keep your website running included: design,
+                  development, hosting, ongoing edits, maintenance, updates and
+                  support.
+                </p>
               </div>
-
-              <div class="mt-16 grid gap-6 sm:grid-cols-3">
-                {showcase.map((project) => (
-                  <article class="rounded-3xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 hover:-translate-y-1">
-                    <div class="aspect-4/3 rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
-                    <div class="px-2 pb-2 pt-5">
-                      <h3 class="text-lg font-semibold tracking-tight">
-                        {project.name}
+              <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                {features.map((feature) => (
+                  <article class="rounded-2xl bg-white p-6 ring-1 ring-black/5 duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <div class="flex items-center gap-3">
+                      <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-forest/5 text-forest">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="h-4 w-4"
+                          set:html={feature.icon}
+                        />
+                      </div>
+                      <h3 class="text-lg text-forest font-semibold tracking-tight">
+                        {feature.title}
                       </h3>
-                      <p class="mt-1 text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
-                        {project.trade}
-                      </p>
-                      <p class="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
-                        {project.blurb}
-                      </p>
                     </div>
+                    <p class="mt-3 text-base lg:text-sm leading-relaxed text-neutral-600">
+                      {feature.body}
+                    </p>
                   </article>
                 ))}
               </div>
             </div>
           </div>
-        </StackedSection>
-        <StackedSection id="what-we-offer" bg="bg-stone" headerBg="stone">
-          <div class="">What We Offer</div>
         </StackedSection>
 
         <footer class="relative bg-white">
@@ -248,7 +363,7 @@ const showcase = [
     {
       trigger: "#what-we-offer",
       pinStart: "bottom bottom",
-      headerBg: "forest",
+      headerBg: "stone",
     },
   ]
 
