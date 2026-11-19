@@ -3,6 +3,7 @@ import "../styles/global.css"
 import Brand from "../components/Brand.astro"
 import { Image } from "astro:assets"
 import landscapeImage from "../assets/landscape.webp"
+import { IconArrowNarrowRight } from "@tabler/icons-preact"
 
 const showcase = [
   {
@@ -70,15 +71,17 @@ const showcase = [
             <div id="cta" class="mt-auto mb-[40vh]">
               <button
                 type="button"
-                class="group flex items-center gap-3 rounded-full border border-[#1F2B24] bg-[#1F2B24] px-7 py-3 tracking-wide text-white shadow-lg shadow-black/20 hover:cursor-pointer hover:bg-white hover:text-neutral-900"
+                class="group flex relative isolate overflow-hidden items-center gap-3 rounded-full border border-[#1F2B24] bg-[#1F2B24] px-7 py-3 tracking-wide text-white shadow-lg shadow-black/20 hover:cursor-pointer"
               >
-                Let's talk
-                <span
-                  aria-hidden="true"
-                  class="text-lg transition-transform duration-300 will-change-transform group-hover:translate-x-1"
-                >
-                  →
+                <span class="absolute inset-0 -z-10 origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span class="font-medium transition-colors duration-300 group-hover:text-neutral-900">
+                  Let's talk
                 </span>
+                <IconArrowNarrowRight
+                  stroke={1.5}
+                  aria-hidden="true"
+                  class="transition-all duration-300 group-hover:translate-x-1 group-hover:text-neutral-900"
+                />
               </button>
             </div>
           </div>
