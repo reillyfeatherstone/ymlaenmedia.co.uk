@@ -16,6 +16,8 @@ const {
   curveClass = "",
   class: className = "",
 } = Astro.props
+
+const textClass = bg === "bg-forest" ? "text-white" : ""
 ---
 
 <section
@@ -31,7 +33,7 @@ const {
       curveClass,
     ]}
   />
-  <div class:list={["min-h-0 w-full flex-1", bg, className]}>
+  <div class:list={["min-h-0 w-full flex-1", bg, className, textClass]}>
     <div class="mx-auto w-full max-w-7xl px-page sm:px-page-sm">
       <slot />
     </div>
