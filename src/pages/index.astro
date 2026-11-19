@@ -3,7 +3,6 @@ import "../styles/global.css"
 import Brand from "../components/Brand.astro"
 import { Image } from "astro:assets"
 import landscapeImage from "../assets/landscape.webp"
-import { IconArrowNarrowRight } from "@tabler/icons-preact"
 
 const showcase = [
   {
@@ -77,19 +76,31 @@ const showcase = [
                 <span class="font-medium transition-colors duration-300 group-hover:text-neutral-900">
                   Let's talk
                 </span>
-                <IconArrowNarrowRight
-                  stroke={1.5}
-                  aria-hidden="true"
-                  class="transition-all duration-300 group-hover:translate-x-1 group-hover:text-neutral-900"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right transition-all duration-300 group-hover:translate-x-1 group-hover:text-neutral-900"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M5 12l14 0" />
+                  <path d="M15 16l4 -4" />
+                  <path d="M15 8l4 4" />
+                </svg>
               </button>
             </div>
           </div>
         </section>
 
         <section id="what-we-do" class="relative">
-          <div class="-mb-px px-page h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-white" />
-          <div class="flex min-h-svh scroll-mt-24 flex-col justify-center bg-white py-20 text-neutral-900">
+          <div class="-mb-px px-page h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-[#E6E4E2]" />
+          <div class="flex min-h-svh scroll-mt-24 flex-col justify-center bg-[#E6E4E2] py-20 text-neutral-900">
             <div class="mx-auto w-full max-w-275 px-page sm:px-page-sm">
               <div class="max-w-3xl">
                 <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
@@ -121,10 +132,10 @@ const showcase = [
             </div>
           </div>
         </section>
-        <div class="h-45 bg-white"></div>
+        <div class="h-45 bg-[#E6E4E2]" />
 
-        <section id="work" class="relative scroll-mt-48 pb-24">
-          <div class="-mt-15 -mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-[#1F2B24]"></div>
+        <section id="work" class="relative scroll-mt-48">
+          <div class="-mt-15 -mb-px h-15 w-full rounded-t-[300%_100%] sm:rounded-t-[200%_100%] md:rounded-t-[150%_100%] bg-[#1F2B24] pb-24"></div>
           <div class="bg-[#1F2B24] pt-10 pb-24 text-white sm:pt-16 sm:pb-32">
             <div class="mx-auto max-w-275 px-page sm:px-page-sm pt-30">
               <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
@@ -233,7 +244,7 @@ const showcase = [
   ScrollTrigger.create({
     trigger: "#what-we-do",
     start: "top top+=35",
-    toggleClass: { targets: "#header", className: "bg-white!" },
+    toggleClass: { targets: "#header", className: "bg-[#E6E4E2]!" },
   })
 
   ScrollTrigger.create({
