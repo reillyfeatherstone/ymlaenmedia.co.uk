@@ -90,7 +90,7 @@ const pricing = [
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>Ymlaen Media | Web Design</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -107,9 +107,10 @@ const pricing = [
   <body>
     <header
       id="header"
-      class="fixed inset-x-0 top-0 z-99 px-5 text-black
+      class="fixed inset-x-0 top-0 z-50 px-5 text-black transition-colors duration-200
       data-[bg=stone]:bg-stone
-        data-[bg=forest]:bg-forest data-[bg=forest]:text-white"
+        data-[bg=forest]:bg-forest data-[bg=forest]:text-white
+        data-[bg=white]:bg-white"
     >
       <div class="mx-auto flex h-16 max-w-400 items-center justify-between">
         <div class="font-display text-3xl leading-none">
@@ -122,348 +123,301 @@ const pricing = [
       </div>
     </header>
 
-    <div id="smoother-wrapper">
-      <div id="smoother-content">
-        <section
-          id="hero"
-          class="min-h-svh bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat"
-        >
-          <div class="mx-auto flex w-full max-w-400 flex-col items-center px-page text-center sm:px-page-sm gap-15">
-            <div class="flex flex-col gap-2 pt-30 text-5xl font-base sm:font-medium md:pt-35 text-white mix-blend-difference sm:pt-35 sm:text-7xl lg:pt-45 lg:text-9xl">
-              <span>Small Business</span>
-              <span>Web Design</span>
-            </div>
+    <main>
+      <section
+        id="hero"
+        data-header-bg="transparent"
+        class="flex min-h-svh flex-col bg-[url('/hero.webp')] bg-cover bg-center bg-no-repeat"
+      >
+        <div class="mx-auto flex w-full max-w-400 flex-col items-center px-page text-center sm:px-page-sm gap-15">
+          <div class="flex flex-col gap-2 pt-30 text-5xl font-medium md:pt-35 text-white mix-blend-difference sm:pt-35 sm:text-7xl lg:pt-45 lg:text-9xl">
+            <span>Small Business</span>
+            <span>Web Design</span>
+          </div>
 
-            <div id="cta" class="mt-auto mb-[40vh]">
-              <button
-                type="button"
-                class="group flex relative isolate overflow-hidden items-center gap-3 rounded-full border border-forest bg-forest px-7 py-3 tracking-wide text-white shadow-lg shadow-black/20 hover:cursor-pointer"
+          <div id="cta">
+            <button
+              type="button"
+              class="group flex relative isolate overflow-hidden items-center gap-3 rounded-full border border-forest bg-forest px-7 py-3 tracking-wide text-white shadow-lg shadow-black/20 hover:cursor-pointer"
+            >
+              <span class="absolute inset-0 -z-10 origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100" />
+              <span class="font-medium transition-colors duration-300 group-hover:text-neutral-900">
+                Let's talk
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right transition-all duration-300 group-hover:translate-x-1 group-hover:text-neutral-900"
               >
-                <span class="absolute inset-0 -z-10 origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100" />
-                <span class="font-medium transition-colors duration-300 group-hover:text-neutral-900">
-                  Let's talk
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12l14 0" />
+                <path d="M15 16l4 -4" />
+                <path d="M15 8l4 4" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <StackedSection id="what-we-do" bg="bg-stone" headerBg="stone">
+        <div class="py-24 text-neutral-900 sm:py-32">
+          <div class="mx-auto w-full max-w-275">
+            <div class="max-w-3xl">
+              <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
+                What We Do
+              </p>
+              <h2 class="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                Websites that move your business{" "}
+                <span class="text-[#2F4A3C]">forward.</span>
+              </h2>
+              <p class="mt-8 text-lg leading-relaxed text-neutral-600 sm:text-xl">
+                You've built your business on a good name and word of mouth. A
+                professional website can take that to the next level. Most
+                people look a business up online before reaching out, so yours
+                should give them confidence in choosing you.
+              </p>
+              <p class="mt-5 text-lg leading-relaxed text-neutral-600 sm:text-xl">
+                Ymlaen means "ahead" in Welsh, and that's what we want for your
+                business. We build bespoke, hand-coded websites designed around
+                you and your customers. Built for speed and performance, they
+                keep Google happy and help more customers find you.
+              </p>
+              <p class="mt-5 text-lg leading-relaxed text-neutral-600 sm:text-xl">
+                We also take care of edits and ongoing support, so you're never
+                left in the dark. Our goal is to build lasting relationships
+                with our clients and support their growth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </StackedSection>
+
+      <StackedSection id="work" bg="bg-forest" headerBg="forest">
+        <div class="mx-auto max-w-275 py-24 sm:py-32">
+          <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+            Showcase
+          </p>
+          <h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            Recent builds, <span class="text-[#8e9a4e]">made to win work.</span>
+          </h2>
+          <p class="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl">
+            Whether you're a self-employed plumber or a growing building firm,
+            we make websites that turn visitors into customers
+          </p>
+
+          <div class="mt-16 grid gap-6 sm:grid-cols-3">
+            {showcase.map((project) => (
+              <article class="rounded-3xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 hover:-translate-y-1">
+                <div class="aspect-4/3 rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
+                <div class="px-2 pb-2 pt-5">
+                  <h3 class="text-lg font-semibold tracking-tight">
+                    {project.name}
+                  </h3>
+                  <p class="mt-1 text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+                    {project.trade}
+                  </p>
+                  <p class="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
+                    {project.blurb}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </StackedSection>
+
+      <StackedSection id="what-we-offer" bg="bg-stone" headerBg="stone">
+        <div class="mx-auto grid grid-cols-1 gap-10 py-24 max-lg:max-w-3xl md:gap-16 sm:py-32 lg:grid-cols-[6fr_9fr]">
+          <div class="relative self-center aspect-square sm:aspect-8/7 overflow-hidden lg:aspect-auto md:max-w-150 md:mx-auto">
+            <Picture
+              src={Headshot}
+              alt="Reilly Featherstone"
+              formats={["avif", "webp"]}
+              quality={75}
+              widths={[480, 720, 960]}
+              inferSize
+              class="h-full w-full rounded-3xl rounded-br-lg object-cover object-[0%_20%] lg:h-auto lg:w-full"
+            />
+            <div class="flex flex-row items-center gap-5 absolute right-5 bottom-5 bg-white p-5 rounded-md">
+              <div class="flex flex-col">
+                <span class="text-base font-medium leading-4">
+                  Reilly Featherstone
                 </span>
+                <span class="text-sm text-forest">Owner, Developer</span>
+              </div>
+              <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right transition-all duration-300 group-hover:translate-x-1 group-hover:text-neutral-900"
+                  viewBox="0 0 64 64"
+                  class="h-10 w-10"
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M5 12l14 0" />
-                  <path d="M15 16l4 -4" />
-                  <path d="M15 8l4 4" />
+                  <path
+                    d="M9 11 H23 L32 28 L41 11 H55 L39 38 V53 H25 V38 Z"
+                    fill="#232a22"
+                  ></path>
+                  <circle cx="51" cy="48" r="5.5" fill="#8e9a4e"></circle>
                 </svg>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <StackedSection
-          id="what-we-do"
-          bg="bg-stone"
-          headerBg="stone"
-          class="pb-60"
-        >
-          <div class="flex min-h-svh scroll-mt-24 flex-col justify-center py-20 text-neutral-900">
-            <div class="mx-auto w-full max-w-275">
-              <div class="max-w-3xl">
-                <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-                  What We Do
-                </p>
-                <h2 class="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                  Websites that move your business{" "}
-                  <span class="text-[#2F4A3C]">forward.</span>
-                </h2>
-                <p class="mt-8 text-lg leading-relaxed text-neutral-600 sm:text-xl">
-                  You've built your business on a good name and word of mouth. A
-                  professional website can take that to the next level. Most
-                  people look a business up online before reaching out, so yours
-                  should give them confidence in choosing you.
-                </p>
-                <p class="mt-5 text-lg leading-relaxed text-neutral-600 sm:text-xl">
-                  Ymlaen means "ahead" in Welsh, and that's what we want for
-                  your business. We build bespoke, hand-coded websites designed
-                  around you and your customers. Built for speed and
-                  performance, they keep Google happy and help more customers
-                  find you.
-                </p>
-                <p class="mt-5 text-lg leading-relaxed text-neutral-600 sm:text-xl">
-                  We also take care of edits and ongoing support, so you're
-                  never left in the dark. Our goal is to build lasting
-                  relationships with our clients and support their growth.
-                </p>
               </div>
             </div>
           </div>
-        </StackedSection>
-
-        <StackedSection
-          id="work"
-          bg="bg-forest"
-          headerBg="forest"
-          class="pb-60"
-        >
-          <div class="pt-40 pb-24 sm:pt-46 sm:pb-32 mx-auto max-w-275">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
-              Showcase
+          <div class="flex flex-col gap-2">
+            <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
+              What We Offer
             </p>
-            <h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              Recent builds,{" "}
-              <span class="text-[#8e9a4e]">made to win work.</span>
+            <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+              Websites starting at <span class="text-[#2F4A3C]">£0 down</span>{" "}
+              and <span class="text-[#2F4A3C]">£150 per month</span>
             </h2>
-            <p class="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-300 sm:text-xl">
-              Whether you're a self-employed plumber or a growing building firm,
-              we make websites that turn visitors into customers
-            </p>
-
-            <div class="mt-16 grid gap-6 sm:grid-cols-3">
-              {showcase.map((project) => (
-                <article class="rounded-3xl border border-white/10 bg-white/5 p-3 transition-transform duration-300 hover:-translate-y-1">
-                  <div class="aspect-4/3 rounded-2xl bg-white/5 ring-1 ring-white/10"></div>
-                  <div class="px-2 pb-2 pt-5">
-                    <h3 class="text-lg font-semibold tracking-tight">
-                      {project.name}
-                    </h3>
-                    <p class="mt-1 text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
-                      {project.trade}
-                    </p>
-                    <p class="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
-                      {project.blurb}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </StackedSection>
-
-        <StackedSection
-          id="what-we-offer"
-          bg="bg-stone"
-          headerBg="stone"
-          class="pb-48"
-        >
-          <div class="grid grid-cols-1 lg:grid-cols-[6fr_9fr] gap-10 md:gap-16 pt-40 pb-100 sm:pt-46 sm:pb-32 mx-auto max-lg:max-w-3xl">
-            <div class="relative self-center aspect-square sm:aspect-8/7 overflow-hidden lg:aspect-auto md:max-w-150 md:mx-auto">
-              <Picture
-                src={Headshot}
-                alt="Reilly Featherstone"
-                formats={["avif", "webp"]}
-                quality={75}
-                widths={[480, 720, 960]}
-                inferSize
-                class="h-full w-full rounded-3xl rounded-br-lg object-cover object-[0%_20%] lg:h-auto lg:w-full"
-              />
-              <div class="flex flex-row items-center gap-5 absolute right-5 bottom-5 bg-white p-5 rounded-md">
-                <div class="flex flex-col">
-                  <span class="text-base font-medium leading-4">
-                    Reilly Featherstone
-                  </span>
-                  <span class="text-sm text-forest">Owner, Developer</span>
-                </div>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 64 64"
-                    class="h-10 w-10"
-                  >
-                    <path
-                      d="M9 11 H23 L32 28 L41 11 H55 L39 38 V53 H25 V38 Z"
-                      fill="#232a22"
-                    ></path>
-                    <circle cx="51" cy="48" r="5.5" fill="#8e9a4e"></circle>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2">
-              <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-                What We Offer
+            <div class="basic mt-4 flex flex-col gap-5">
+              <p class="text-lg lg:text-base leading-relaxed text-neutral-600">
+                Get a bespoke, professionally designed website for £0 upfront.
+                Just £150/month for a complete website package, including up to
+                five pages. Need something bigger? We offer custom pricing based
+                on the scope of work, number of additional pages and time
+                involved.
               </p>
-              <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-                Websites starting at <span class="text-[#2F4A3C]">£0 down</span>{" "}
-                and <span class="text-[#2F4A3C]">£150 per month</span>
-              </h2>
-              <div class="basic mt-4 flex flex-col gap-5">
-                <p class="text-lg lg:text-base leading-relaxed text-neutral-600">
-                  Get a bespoke, professionally designed website for £0 upfront.
-                  Just £150/month for a complete website package, including up
-                  to five pages. Need something bigger? We offer custom pricing
-                  based on the scope of work, number of additional pages and
-                  time involved.
-                </p>
-                <p class="text-lg lg:text-base leading-relaxed text-neutral-600">
-                  There's a 12-month minimum commitment, with everything you
-                  need to keep your website running included: design,
-                  development, hosting, ongoing edits, maintenance, updates and
-                  support.
-                </p>
-              </div>
-              <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                {features.map((feature) => (
-                  <article class="rounded-2xl bg-white p-6 ring-1 ring-black/5 duration-300 hover:-translate-y-1 hover:shadow-lg">
-                    <div class="flex items-center gap-3">
-                      <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-forest/5 text-forest">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="h-4 w-4"
-                          set:html={feature.icon}
-                        />
-                      </div>
-                      <h3 class="text-lg text-forest font-semibold tracking-tight">
-                        {feature.title}
-                      </h3>
+              <p class="text-lg lg:text-base leading-relaxed text-neutral-600">
+                There's a 12-month minimum commitment, with everything you need
+                to keep your website running included: design, development,
+                hosting, ongoing edits, maintenance, updates and support.
+              </p>
+            </div>
+            <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+              {features.map((feature) => (
+                <article class="rounded-2xl bg-white p-6 ring-1 ring-black/5 duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-forest/5 text-forest">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="h-4 w-4"
+                        set:html={feature.icon}
+                      />
                     </div>
-                    <p class="mt-3 text-base lg:text-sm leading-relaxed text-neutral-600">
-                      {feature.body}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </StackedSection>
-
-        <StackedSection
-          id="pricing"
-          bg="bg-forest"
-          headerBg="forest"
-          class="pb-60"
-        >
-          <div class="text-center pt-40 pb-24 sm:pt-46 sm:pb-32 mx-auto max-w-275">
-            <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
-              Pricing
-            </p>
-            <h2 class="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              How would you like to pay?
-            </h2>
-
-            <div class="text-left mt-16 grid gap-6 mx-auto max-w-4xl sm:grid-cols-2">
-              {pricing.map((plan) => (
-                <article class="flex flex-col rounded-3xl bg-white p-8 ring-1 ring-black/5 sm:p-10">
-                  <h3 class="text-4xl font-bold tracking-tight text-forest">
-                    {plan.name}
-                  </h3>
-                  <ul class="mt-6 flex flex-col gap-3">
-                    {plan.features.map((feature) => (
-                      <li
-                        class:list={[
-                          "flex items-center gap-3 text-sm lg:text-base justify-between",
-                          feature.included ? "text-black" : "text-neutral-400",
-                        ]}
-                      >
-                        <span>{feature.text}</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class:list={[
-                            "h-5 w-5 shrink-0",
-                            feature.included
-                              ? "text-forest"
-                              : "text-neutral-300",
-                          ]}
-                          set:html={feature.included ? checkIcon : xIcon}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                  <div class="mt-auto flex items-baseline gap-2 pt-10">
-                    <span class="text-5xl font-bold tracking-tight text-forest">
-                      {plan.price}
-                    </span>
-                    <span class="text-sm text-neutral-500">{plan.note}</span>
+                    <h3 class="text-lg text-forest font-semibold tracking-tight">
+                      {feature.title}
+                    </h3>
                   </div>
+                  <p class="mt-3 text-base lg:text-sm leading-relaxed text-neutral-600">
+                    {feature.body}
+                  </p>
                 </article>
               ))}
             </div>
           </div>
-        </StackedSection>
+        </div>
+      </StackedSection>
 
-        <footer class="relative bg-white">
-          <div class="mx-auto max-w-275 px-page py-5 sm:px-page-sm sm:py-28">
-            <div class="rounded-3xl bg-forest px-8 py-14 text-center text-white sm:px-16 sm:py-20">
-              <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
-                Looking for a new website?
-              </h2>
-              <p class="mx-auto mt-5 max-w-2xl text-lg text-neutral-300">
-                Let us know what you're looking for, and we'll get back to you
-                right away.
-              </p>
-              <a
-                href="mailto:hello@example.com"
-                class="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-neutral-900 no-underline transition-transform hover:scale-105"
-              >
-                Start a conversation
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
+      <StackedSection id="pricing" bg="bg-forest" headerBg="forest">
+        <div class="mx-auto max-w-275 py-24 text-center sm:py-32">
+          <p class="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+            Pricing
+          </p>
+          <h2 class="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            How would you like to pay?
+          </h2>
+
+          <div class="text-left mt-16 grid gap-6 mx-auto max-w-4xl sm:grid-cols-2">
+            {pricing.map((plan) => (
+              <article class="flex flex-col rounded-3xl bg-white p-8 ring-1 ring-black/5 sm:p-10">
+                <h3 class="text-4xl font-bold tracking-tight text-forest">
+                  {plan.name}
+                </h3>
+                <ul class="mt-6 flex flex-col gap-3">
+                  {plan.features.map((feature) => (
+                    <li
+                      class:list={[
+                        "flex items-center gap-3 text-sm lg:text-base justify-between",
+                        feature.included ? "text-black" : "text-neutral-400",
+                      ]}
+                    >
+                      <span>{feature.text}</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class:list={[
+                          "h-5 w-5 shrink-0",
+                          feature.included ? "text-forest" : "text-neutral-300",
+                        ]}
+                        set:html={feature.included ? checkIcon : xIcon}
+                      />
+                    </li>
+                  ))}
+                </ul>
+                <div class="mt-auto flex items-baseline gap-2 pt-10">
+                  <span class="text-5xl font-bold tracking-tight text-forest">
+                    {plan.price}
+                  </span>
+                  <span class="text-sm text-neutral-500">{plan.note}</span>
+                </div>
+              </article>
+            ))}
           </div>
-        </footer>
-      </div>
-    </div>
+        </div>
+      </StackedSection>
+
+      <footer data-header-bg="white" class="bg-white">
+        <div class="mx-auto max-w-275 px-page py-16 sm:px-page-sm sm:py-24">
+          <div class="rounded-3xl bg-forest px-8 py-14 text-center text-white sm:px-16 sm:py-20">
+            <h2 class="text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+              Looking for a new website?
+            </h2>
+            <p class="mx-auto mt-5 max-w-2xl text-lg text-neutral-300">
+              Let us know what you're looking for, and we'll get back to you
+              right away.
+            </p>
+            <a
+              href="mailto:hello@example.com"
+              class="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-neutral-900 no-underline transition-transform hover:scale-105"
+            >
+              Start a conversation
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </main>
   </body>
 </html>
 
 <script>
-  import { ScrollSmoother, ScrollTrigger } from "../lib/gsap"
+  import { ScrollTrigger } from "../lib/gsap"
 
-  const smoother = ScrollSmoother.create({
-    wrapper: "#smoother-wrapper",
-    content: "#smoother-content",
-    smooth: 1.5,
-    effects: true,
-  })
+  ScrollTrigger.config({ ignoreMobileResize: true })
 
   const sections = [
-    { trigger: "#hero", pinStart: "top top", headerBg: "transparent" },
-    {
-      trigger: "#what-we-do",
-      pinStart: "bottom bottom+=240",
-      headerBg: "stone",
-    },
-    { trigger: "#work", pinStart: "bottom bottom+=290", headerBg: "forest" },
-    {
-      trigger: "#what-we-offer",
-      pinStart: "bottom bottom+=240",
-      headerBg: "stone",
-    },
-    { trigger: "#pricing", pinStart: "bottom bottom+=240", headerBg: "forest" },
+    { trigger: "#hero", headerBg: "transparent" },
+    { trigger: "#what-we-do", headerBg: "stone" },
+    { trigger: "#work", headerBg: "forest" },
+    { trigger: "#what-we-offer", headerBg: "stone" },
+    { trigger: "#pricing", headerBg: "forest" },
+    { trigger: "footer", headerBg: "white" },
   ]
 
   const header = document.querySelector<HTMLElement>("#header")!
-
   const setBackground = (value: string) => () => (header.dataset.bg = value)
 
-  sections.forEach(({ trigger, pinStart, headerBg }, i) => {
-    ScrollTrigger.create({
-      trigger,
-      start: pinStart,
-      pin: true,
-      pinSpacing: false,
-    })
-
+  sections.forEach(({ trigger, headerBg }, i) => {
     const sectionAbove = sections[i - 1]
-    const isFirstSection = !sectionAbove
 
-    if (!isFirstSection) {
+    if (sectionAbove) {
       ScrollTrigger.create({
         trigger,
         start: "top top",
@@ -473,14 +427,4 @@ const pricing = [
       })
     }
   })
-
-  // Smooth scroll Nav Links
-  document
-    .querySelectorAll<HTMLAnchorElement>('#nav a[href^="#"]')
-    .forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault()
-        smoother.scrollTo(link.getAttribute("href")!, true, "top -59px")
-      })
-    })
 </script>
