@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css"
+import "lenis/dist/lenis.css"
 import Brand from "../components/Brand.astro"
 import { Image } from "astro:assets"
 import landscapeImage from "../assets/landscape.webp"
@@ -398,7 +399,26 @@ const pricing = [
 </html>
 
 <script>
+  import Lenis from "lenis"
   import { ScrollTrigger } from "../lib/gsap"
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+  let lenis: Lenis | undefined
+
+  const syncLenis = () => {
+    lenis?.destroy()
+    lenis = reducedMotion.matches
+      ? undefined
+      : new Lenis({
+          lerp: 0.1,
+          autoRaf: true,
+          syncTouch: false,
+        })
+    lenis?.on("scroll", ScrollTrigger.update)
+  }
+
+  syncLenis()
+  reducedMotion.addEventListener("change", syncLenis)
 
   ScrollTrigger.config({ ignoreMobileResize: true })
 
@@ -427,4 +447,20 @@ const pricing = [
       })
     }
   })
+
+  document
+    .querySelectorAll<HTMLAnchorElement>('#nav a[href^="#"]')
+    .forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href")
+        if (!href) return
+        const target = document.querySelector<HTMLElement>(href)
+        if (!target) return
+
+        if (lenis) {
+          e.preventDefault()
+          lenis.scrollTo(target)
+        }
+      })
+    })
 </script>
