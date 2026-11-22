@@ -108,11 +108,17 @@ const pricing = [
   <body>
     <header
       id="header"
-      class="fixed inset-x-0 top-0 z-50 px-5 text-black transition-colors duration-200
-      data-[bg=stone]:bg-stone
-        data-[bg=forest]:bg-forest data-[bg=forest]:text-white
-        data-[bg=white]:bg-white"
+      class="group fixed inset-x-0 top-0 z-50 px-5 text-black transition-colors duration-200 data-[bg=forest]:text-white"
     >
+      <div
+        id="header-hero-bg"
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 -z-20 bg-stone opacity-0"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 -z-10 transition-colors duration-300 group-data-[bg=stone]:bg-stone group-data-[bg=forest]:bg-forest group-data-[bg=white]:bg-white"
+      ></div>
       <div class="mx-auto flex h-16 max-w-400 items-center justify-between">
         <div class="font-display text-3xl leading-none">
           <Brand />
@@ -400,7 +406,7 @@ const pricing = [
 
 <script>
   import Lenis from "lenis"
-  import { ScrollTrigger } from "../lib/gsap"
+  import { gsap, ScrollTrigger } from "../lib/gsap"
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
   let lenis: Lenis | undefined
@@ -422,6 +428,17 @@ const pricing = [
 
   ScrollTrigger.config({ ignoreMobileResize: true })
 
+  gsap.to("#header-hero-bg", {
+    opacity: 1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#hero",
+      start: "5% top",
+      end: "25% top",
+      scrub: true,
+    },
+  })
+
   const sections = [
     { trigger: "#hero", headerBg: "transparent" },
     { trigger: "#what-we-do", headerBg: "stone" },
@@ -440,7 +457,7 @@ const pricing = [
     if (sectionAbove) {
       ScrollTrigger.create({
         trigger,
-        start: "top top",
+        start: "top top+=64",
         onEnter: setBackground(headerBg),
         onEnterBack: setBackground(headerBg),
         onLeaveBack: setBackground(sectionAbove.headerBg),
